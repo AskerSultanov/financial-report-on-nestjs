@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/css/loader.css" type="text/css" />
+    <link rel="stylesheet" href="/css/modalWindow.css" type="text/css" />
+    <link rel="stylesheet" href="/css/uploadFilesModal.css" type="text/css" />
+    <link rel="stylesheet" href="/css/decodeReportWithoutRegistration.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Расшифровка финансового отчета wildberries без регистрации</title>
+  </head>
+  <body>
+    <button id="decode-report-without-registration-button" type="button">Расшифровка отчета без регистрации</button>
+    <div class="auth-buttons">
+      <a href="/auth" id="auth" onclick="window.localStorage.clear()">Войти</a>
+      <a href="/reg" id="registration" onclick="window.localStorage.clear()">Регистрация</a>
+    </div>
+    <dialog id="dialog">
+      <form>
+        <p>Для получения отчета необходим токен с тремя категориями: Аналитика, Продвижение, Статистика</p>
+        <p>Важно понимать, что я не сохраняю токен, введённый вами</p>
+        <p>Если не доверяете свой токен этому сайту, тогда можете загрузить файлы</p>
+        <button type="button" id="upload-files-btn">Загрузить файлы</button>
+        <label for="token">Введите токен</label>
+        <input type="text" id="token" />
+        <label for="dateFrom">Введите начало периода</label>
+        <input type="text" id="dateFrom" placeholder="в формате гггг.мм.дд   2025.04.14" />
+        <label for="dateTo">Введите конец периода</label>
+        <input type="text" id="dateTo" placeholder="в формате гггг.мм.дд   2025.04.21" />
+        <label for="tax-rate">Введите процент налогообложения</label>
+        <input type="text" id="tax-rate" placeholder="по умолчанию 0%" />
+        <button type="button" onclick="window.dialog.close()">Закрыть</button>
+        <button type="button" id="get-report">Получить отчет</button>
+      </form>
+    </dialog>
+    <div id="tables-container"></div>
+    <button hidden id="download-report-as-xlsx-button">Скачать отчет как эксель</button>
+    <script src="/js/decodeReportWithoutRegistration/index.js" type="module"></script>
+    <script src="/js/decodeReportWithoutRegistration/showReportIfExist.js" type="module"></script>
+    <script src="/js/decodeReportWithoutRegistration/decodeReportWithoutRegistrationButtonHandler.js" type="module"></script>
+  </body>
+</html>

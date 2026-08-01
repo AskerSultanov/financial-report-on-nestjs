@@ -1,0 +1,182 @@
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #1e2227 0%, #2d3439 100%);
+  color: #e9ecef;
+  font-family: "Segoe UI", Arial, sans-serif;
+  min-height: 100vh;
+}
+
+.top-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 49px;
+  background: rgba(34, 39, 46, 0.97);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid rgba(73, 80, 87, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 21px;
+  z-index: 1000;
+  box-shadow: 0 5.6px 21px rgba(0, 0, 0, 0.5);
+}
+
+.inline-form {
+  margin: 0;
+  padding: 0;
+  display: inline;
+}
+
+#report-info {
+  display: flex;
+  align-items: center;
+  gap: 12.6px;
+  color: #ced4da;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+#report-info span {
+  color: #71b7ff;
+  font-weight: 600;
+}
+
+#report-info .separator {
+  color: #555;
+  font-weight: bold;
+}
+
+.top-btn {
+  min-height: 30.8px;
+  padding: 0 14px;
+  border: none;
+  border-radius: 7px;
+  font-size: 11.2px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 2.8px 8.4px rgba(0, 0, 0, 0.3);
+}
+
+.top-btn:hover {
+  transform: translateY(-1.4px);
+  box-shadow: 0 5.6px 14px rgba(0, 0, 0, 0.45);
+}
+
+.main-btn {
+  background: linear-gradient(135deg, #0d6efd, #0d8aff);
+}
+.financial-accounting-status-btn {
+  background: linear-gradient(135deg, #a100b3, #a100b3);
+}
+.excel-btn {
+  background: linear-gradient(135deg, #198754, #20c997);
+}
+.cost-btn {
+  background: linear-gradient(135deg, #6f42c1, #9d4edd);
+}
+.delete-btn {
+  background: linear-gradient(135deg, #dc3545, #ff5c6c);
+}
+
+.main-btn:hover {
+  background: linear-gradient(135deg, #0b5ed7, #0a7bff);
+}
+.excel-btn:hover {
+  background: linear-gradient(135deg, #157347, #1baa80);
+}
+.cost-btn:hover {
+  background: linear-gradient(135deg, #5a32a3, #8a3ec7);
+}
+.delete-btn:hover {
+  background: linear-gradient(135deg, #c82333, #e64858);
+}
+
+.right-buttons {
+  display: flex;
+  gap: 9.8px;
+  align-items: center;
+}
+
+table {
+  width: 100%;
+  max-width: 1190px;
+  margin: 105px auto 42px;
+  border-collapse: separate;
+  border-spacing: 0;
+  background: #2d3439;
+  border-radius: 11.2px;
+  overflow: hidden;
+  box-shadow: 0 10.5px 31.5px rgba(0, 0, 0, 0.6);
+}
+
+th,
+td {
+  padding: 12.6px 9.8px;
+  text-align: center;
+  vertical-align: middle;
+  border-bottom: 1px solid #40484f;
+  border-right: 1px solid #40484f;
+}
+
+th {
+  background: linear-gradient(to bottom, #40484f, #343a40);
+  color: #dee2e6;
+  font-weight: 600;
+  font-size: 10.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.56px;
+}
+
+tbody tr:nth-child(even) {
+  background-color: rgba(52, 58, 64, 0.4);
+}
+
+tbody tr:hover {
+  background-color: rgba(80, 90, 100, 0.7);
+  transform: scale(1.0028);
+}
+
+td:last-child,
+th:last-child {
+  border-right: none;
+}
+
+.sku-photo-uploader {
+  width: 70px;
+  height: 56px;
+  background: #343a40;
+  border: 2px dashed #555;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin: 0 auto;
+  transition: 0.2s;
+}
+
+.sku-photo-uploader:hover {
+  border-color: #0d6efd;
+  background: #383d44;
+}
+
+.report-summary-label-wrapper {
+  text-align: center;
+  margin-top: 105px;
+  margin-bottom: -77px;
+}
+
+.report-summary-label {
+  display: inline-block;
+  font-size: 21px;
+  font-weight: 600;
+  color: #71b7ff;
+  padding: 5.6px 14px;
+  background: rgba(13, 110, 253, 0.15);
+  border-radius: 2.8px;
+  letter-spacing: 0.35px;
+}

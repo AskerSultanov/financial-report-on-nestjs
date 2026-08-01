@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/goods.css" type="text/css" />
+    <link rel="stylesheet" href="/css/upload.css" type="text/css" />
+    <title>Товары</title>
+  </head>
+  <body>
+    <button class="btn-to-main" onclick="window.location.href = '/'">На главную</button>
+    <div class="top-controls">
+      <button id="download-weekly-prices-file" hidden>Скачать цены на неделю</button>
+      <button id="download-skus-metrics" hidden>Скачать статистику</button>
+      <button id="upload-weekly-prices-and-discounts-file" type="button" hidden>Загрузить цены на неделю</button>
+    </div>
+    <div id="week-days" hidden>
+      <label for="week-days-select">Показать цены на:</label>
+      <select name="week-days" id="week-days-select">
+        <option value="0">понедельник</option>
+        <option value="1">вторник</option>
+        <option value="2">среда</option>
+        <option value="3">четверг</option>
+        <option value="4">пятница</option>
+        <option value="5">суббота</option>
+        <option value="6">воскресенье</option>
+      </select>
+    </div>
+    <button id="upload-list-goods" type="button" hidden>Загрузить список товаров</button>
+    <table id="enabled-skus-table" class="skus-table" hidden>
+      <thead id="enabled-skus-thead">
+        <tr id="enabled-skus-thead-row">
+          <th>Артикул</th>
+          <th id="price-th">Цена</th>
+          <th id="discount-th">Скидка продавца</th>
+          <th id="discountedPrice-th">Цена со скидкой</th>
+          <th id="clubDiscounted-price-th">Цена со скидкой, включая скидку WB Клуба</th>
+          <th>Действие с ценой</th>
+          <th>Скрыть товар</th>
+        </tr>
+      </thead>
+      <tbody id="enabled-skus-tbody"></tbody>
+    </table>
+    <table id="disabled-skus-table" class="skus-table" hidden>
+      <thead id="disabled-skus-thead">
+        <tr>
+          <th>Артикул</th>
+          <th>||</th>
+        </tr>
+      </thead>
+      <tbody id="disabled-skus-tbody"></tbody>
+    </table>
+    <form enctype="multipart/form-data" id="upload-form" hidden>
+      <label for="input-field" class="input-file">
+        <input type="file" name="file" id="input-field" multiple accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" />
+      </label>
+    </form>
+    <script src="/js/goods/index.js" type="module"></script>
+  </body>
+</html>

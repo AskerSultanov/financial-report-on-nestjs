@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/index.css" type="text/css" />
+    <link rel="stylesheet" href="/css/modalWindow.css" type="text/css" />
+    <link rel="stylesheet" href="/css/loader.css" type="text/css" />
+    <link rel="stylesheet" href="/css/uploadFilesModal.css" type="text/css" />
+    <link rel="icon" href="../image/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="/css/reportLoadingStatePanel.css" type="text/css" />
+    <title>Отчёты</title>
+  </head>
+  <body id="main">
+    <div class="top-bar">
+      <div class="top-actions">
+        <button id="options" onclick="window.location.href = '/tax-params/'">Налоги</button>
+        <button id="products-button" onclick="window.location.href = '/goods'">Товары</button>
+        <button id="wb-token-page" onclick="window.location.href = '/wbtoken'">Токен</button>
+        <button id="period-button">Загрузить отчёты с токеном</button>
+        <button id="upload-files-btn">Загрузить отчёты файлами</button>
+      </div>
+      <button id="logout-button" class="logout-button">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z" />
+        </svg>
+        Выйти
+      </button>
+    </div>
+    <div id="last-accounted-finances-report"></div>
+    <div hidden id="report-loading-state-panel"></div>
+    <div id="years_container" class="details"></div>
+    <script src="/js/index/index.js" type="module"></script>
+  </body>
+</html>

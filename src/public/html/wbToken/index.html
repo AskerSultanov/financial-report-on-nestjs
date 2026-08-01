@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="/css/wbToken.css" type="text/css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Токен</title>
+  </head>
+  <body>
+    <button class="btn-to-main" onclick="window.location.href = '/'">На главную</button>
+    <div id="required-token-categories">
+      <fieldset>
+        <legend>Необходимые категории в токене</legend>
+        <div>Маркетинг</div>
+        <div>Аналитика</div>
+        <div>Статистика</div>
+        <div>Цены и скидки</div>
+      </fieldset>
+    </div>
+    <div hidden id="table-container" class="token-data">
+      <table id="token-data-table">
+        <tbody>
+          <tr>
+            <td>Просрочен</td>
+            <td id="token-is-expired">-</td>
+          </tr>
+          <tr>
+            <td>Осталось дней</td>
+            <td id="days-left">-</td>
+          </tr>
+          <tr>
+            <td>Использовался</td>
+            <td id="last-used">-</td>
+          </tr>
+          <tr>
+            <td>Действителен до</td>
+            <td id="valid-until">-</td>
+          </tr>
+          <tr>
+            <td>id токена</td>
+            <td id="token-id">-</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="buttons-container">
+      <button id="token-button">Загрузить токен</button>
+      <button hidden id="remove-token-button">Удалить токен</button>
+    </div>
+    <script src="/js/wbToken/index.js" type="module"></script>
+  </body>
+</html>
