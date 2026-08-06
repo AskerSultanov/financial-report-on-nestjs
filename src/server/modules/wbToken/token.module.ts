@@ -9,7 +9,7 @@ import { ServeStaticModule } from '@nestjs/serve-static';
   imports: [
     ServeStaticModule.forRoot({
       serveRoot: '/report',
-      rootPath: join(import.meta.dirname, '../../src/public'),
+      rootPath: join(import.meta.dirname, '../../../src/client/html/wbToken/'),
     }),
   ],
 })

@@ -7,7 +7,7 @@ export class WBTokenController {
   @Get()
   getWBTokenPage(@Res() res: Response) {
     return res.sendFile(
-      join(import.meta.dirname, '../../src/public/html/wbToken/index.html'),
+      join(import.meta.dirname, '../../../src/client/html/wbToken/index.html'),
     );
   }
 }

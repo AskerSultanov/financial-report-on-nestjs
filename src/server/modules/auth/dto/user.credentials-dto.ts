@@ -2,7 +2,7 @@ import { IsString } from 'class-validator';
 import { Exclude, Expose } from 'class-transformer';
 
 @Exclude()
-export class UserCredentials {
+export class UserCredentialsDto {
   @Expose()
   @IsString()
   readonly login!: string;

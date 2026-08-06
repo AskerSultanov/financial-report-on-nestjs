@@ -5,9 +5,9 @@ import { Get, Res, Controller } from '@nestjs/common';
 @Controller('report')
 export class ReportController {
   @Get()
-  get(@Res() res: Response) {
+  getReportPage(@Res() res: Response) {
     return res.sendFile(
-      join(import.meta.dirname, '../../src/public/html/report/index.html'),
+      join(import.meta.dirname, '../../../src/client/html/report/index.html'),
     );
   }
 }

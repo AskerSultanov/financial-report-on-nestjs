@@ -1,10 +1,14 @@
 import { join } from 'path';
+import type { Response } from 'express';
+import { Public } from './publicMetadata.js';
 import { AuthService } from './auth.service.js';
-import type { Response, Request } from 'express';
-import { Get, Res, Req, Post, Body, Controller } from '@nestjs/common';
+import { Get, Res, Post, Body, Controller } from '@nestjs/common';
 
-import { UserCredentials } from './dto/user.credentials-dto.js';
+import { UserCredentialsDto } from './dto/user.credentials-dto.js';
 
+var oneDayMs = 86_400_000;
+
+@Public()
 @Controller('auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
@@ -12,17 +16,20 @@ export class AuthController {
   @Get()
   getAuthPage(@Res() res: Response) {
     return res.sendFile(
-      join(import.meta.dirname, '../../src/public/html/auth/index.html'),
+      join(import.meta.dirname, '../../../src/client/html/auth/index.html'),
     );
   }
 
   @Post()
   async auth(
-    @Req() req: Request,
     @Res() res: Response,
-    @Body() body: UserCredentials,
+    @Body() userCredentials: UserCredentialsDto,
   ) {
-    var credentialsIsValid = await this.authService.checkCredectials(body);
-    console.log({ credentialsIsValid });
+    var { userId, token } = await this.authService.singIn(userCredentials);
+    console.log({ token });
+    return res
+      .cookie('token', token, { httpOnly: true, maxAge: oneDayMs })
+      .cookie('userId', userId, { httpOnly: false, maxAge: oneDayMs })
+      .json({ redirectUrl: '/' });
   }
 }

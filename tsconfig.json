@@ -16,6 +16,7 @@
     "incremental": true,
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
+    "noImplicitThis": false,
     "typeRoots": ["./custom_typings", "./node_modules/@types"]
   }
 }
