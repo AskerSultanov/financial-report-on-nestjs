@@ -8,8 +8,8 @@ export interface IReport {
 }
 
 export interface IMonthPeriod {
-  month?: string | null;
-  reportIds?: IReport[] | null;
+  month: string;
+  reportIds: IReport[] | null[];
   schemaVersion?: number;
 }
 
@@ -20,6 +20,6 @@ export interface IYearsPeriod {
 
 export interface IReportsTree extends Document {
   userId: string;
-  years?: IYearsPeriod[];
+  years: IYearsPeriod[] | [];
   schemaVersion?: number;
 }
