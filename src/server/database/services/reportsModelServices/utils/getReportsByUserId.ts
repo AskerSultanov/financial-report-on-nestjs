@@ -1,8 +1,8 @@
 import { ClientSession } from 'mongoose';
 import {
   IReports,
-  IReportsWithAccountedFinances,
-} from '../../../interfaces/reports.interface.js';
+  IReportsWithAccountedFinances
+} from '../../../interfaces/repots/index.interface.js';
 
 export async function getReportsByUserId(
   userId: string,

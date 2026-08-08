@@ -11,7 +11,7 @@ import { IGetMainPageData } from './interfaces/getMainPageData.interface.js';
 
 import { getRestReports } from './services/getRestReports.js';
 import { getMainPageData } from './services/getMainPageData.js';
-import { IReports } from '../../database/interfaces/reports.interface.js';
+import { IReports } from '../../database/interfaces/repots/index.interface.js';
 
 @Injectable()
 export class IndexService {

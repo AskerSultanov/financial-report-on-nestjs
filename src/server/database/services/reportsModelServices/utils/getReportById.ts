@@ -1,6 +1,6 @@
 import { ClientSession } from 'mongoose';
 import { NotFoundException } from '@nestjs/common';
-import { IReports } from '../../../interfaces/reports.interface.js';
+import { IReports } from '../../../interfaces/repots/index.interface.js';
 
 export async function getReportById(
   userId: string,

@@ -4,10 +4,7 @@ import { InjectModel } from '@nestjs/mongoose';
 
 
 import { Reports, ReportsDocument } from '../../schemas/reports.schema.js';
-import {
-  IReports,
-  IReportsWithAccountedFinances,
-} from '../../interfaces/reports.interface.js';
+import { IReports, IReportsWithAccountedFinances } from '../../interfaces/repots/index.interface.js';
 
 import { getReportById } from './utils/getReportById.js';
 import { saveReportToDb } from './utils/saveReportToDb.js';

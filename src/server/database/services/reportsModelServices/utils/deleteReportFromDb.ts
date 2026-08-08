@@ -1,5 +1,5 @@
 import { ClientSession } from 'mongoose';
-import { IReports } from '../../../interfaces/reports.interface.js';
+import { IReports } from '../../../interfaces/repots/index.interface.js';
 
 export async function deleteReportFromDb(
   userId: string,

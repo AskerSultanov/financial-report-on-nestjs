@@ -1,7 +1,7 @@
 import {
   IReports,
   IReportsWithAccountedFinances,
-} from '../../../database/interfaces/reports.interface.js';
+} from '../../../database/interfaces/repots/index.interface.js';
 import { IYearsPeriod } from '../../../database/interfaces/reportsTree.interface.js';
 import { IReportLoadingStates } from '../../../database/interfaces/reportLoadingState.interface.js';
 

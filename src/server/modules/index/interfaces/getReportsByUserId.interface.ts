@@ -1,7 +1,7 @@
 import {
   IReports,
   IReportsWithAccountedFinances,
-} from '../../../database/interfaces/reports.interface.js';
+} from '../../../database/interfaces/repots/index.interface.js';
 
 export interface IGetReportsByUserId {
   reports: IReports;
