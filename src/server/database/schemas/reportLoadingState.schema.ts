@@ -3,9 +3,6 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
 @Schema({ _id: false })
 class LastLoadedReport {
-  @Prop()
-  periodIndex!: number;
-
   @Prop({ required: true })
   year!: number;
 
@@ -20,16 +17,10 @@ class LastLoadedReport {
 
   @Prop({ required: true })
   reportId!: number;
-
-  @Prop({ required: true, default: 0 })
-  totalTaxAmount!: number;
 }
 
 @Schema({ _id: false })
 class QueueItem {
-  @Prop({ required: true })
-  index!: number;
-
   @Prop({ required: true })
   dateTo!: string;
 
@@ -47,10 +38,10 @@ export class ReportLoadingStates {
   @Prop({ required: true })
   userId!: string;
 
-  @Prop({ default: 0 })
+  @Prop({ default: 0, min: 0 })
   queueLength!: number;
 
-  @Prop({ default: 0 })
+  @Prop({ default: 0, min: 0 })
   queueCapacity!: number;
 
   @Prop({ type: [QueueItem], required: false })
@@ -82,10 +73,9 @@ export class ReportLoadingStates {
 
   @Prop({ type: [Number], required: false })
   emptyReportPeriodsIndexes!: number[];
-
-  @Prop()
-  schemaVersion!: number;
 }
 
 export var ReportLoadingStatesSchema =
   SchemaFactory.createForClass(ReportLoadingStates);
+
+ReportLoadingStatesSchema.index({ userId: 1 }, { unique: true });

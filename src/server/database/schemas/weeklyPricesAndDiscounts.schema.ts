@@ -61,3 +61,5 @@ export class WeeklyPricesAndDiscounts {
 export var WeeklyPricesAndDiscountsSchema = SchemaFactory.createForClass(
   WeeklyPricesAndDiscounts,
 );
+
+WeeklyPricesAndDiscountsSchema.index({ userId: 1 }, { unique: true });

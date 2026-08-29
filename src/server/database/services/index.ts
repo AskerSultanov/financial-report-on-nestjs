@@ -1,11 +1,11 @@
-import { GoodsModelServices } from './goodsModelServices/index.js';
-import { TokensModelServices } from './tokensModelServices/index.js';
-import { UsersModelServices } from './usersModelServices/index.js';
-import { ReportsModelServices } from './reportsModelServices/index.js';
-import { ReportsTreeModelServices } from './reportsTreeModelServices/index.js';
-import { TaxParamsModelServices } from './taxParamsModelServices/index.js';
-import { ReportLoadingStatesModelServices } from './reportLoadingStateModelServices/index.js';
-import { WeeklyPricesAndDiscountsModelServices } from './weeklyPricesAndDiscountsModelServices/index.js';
+import { GoodsModelServices } from './goodsModel/index.js';
+import { TokensModelServices } from './tokensModel/index.js';
+import { UsersModelServices } from './usersModel/index.js';
+import { ReportsModelServices } from './reportModel/index.js';
+import { ReportsTreeModelServices } from './reportsTreeModel/index.js';
+import { TaxParamsModelServices } from './taxParamsModel/index.js';
+import { ReportLoadingStateModelServices } from './reportLoadingStateModel/index.js';
+import { WeeklyPricesAndDiscountsModelServices } from './weeklyPricesAndDiscountsModel/index.js';
 
 export {
   GoodsModelServices,
@@ -14,6 +14,6 @@ export {
   ReportsModelServices,
   TaxParamsModelServices,
   ReportsTreeModelServices,
-  ReportLoadingStatesModelServices,
+  ReportLoadingStateModelServices,
   WeeklyPricesAndDiscountsModelServices,
 };

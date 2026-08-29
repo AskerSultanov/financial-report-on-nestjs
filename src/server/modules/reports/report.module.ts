@@ -1,13 +1,21 @@
 import { join } from 'path';
 import { Module } from '@nestjs/common';
 import { ReportService } from './report.service.js';
-import { ReportController } from './report.controller.js';
 import { ServeStaticModule } from '@nestjs/serve-static';
+import { ReportController } from './report.controller.js';
 import { WBAPIUtils } from './services/utils/WBAPI/index.js';
+import { CalcUtils } from './services/utils/calcUtil/index.js';
 import { ReportTreeBuilderUtil } from './services/utils/reportTreeBuilder/index.js';
+import { reportParserUtillUtil } from './services/utils/reportParsing/index.js';
 
 @Module({
-  providers: [ReportService, WBAPIUtils, ReportTreeBuilderUtil],
+  providers: [
+    CalcUtils,
+    WBAPIUtils,
+    ReportService,
+    reportParserUtillUtil,
+    ReportTreeBuilderUtil,
+  ],
   controllers: [ReportController],
   imports: [
     ServeStaticModule.forRoot({

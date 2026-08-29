@@ -21,7 +21,6 @@ export interface ITaxYear {
   mandatoryInsuranceFeeIsPaid: boolean;
   additionalInsuranceFeeIsPaid: boolean;
   excessInsuranceRate: number;
-  schemaVersion?: number;
 }
 
 export interface IYears {

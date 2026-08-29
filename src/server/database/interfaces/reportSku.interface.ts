@@ -1,0 +1,30 @@
+export interface ISku {
+  skuName: string;
+  qty: number;
+  year: number;
+  taxableAmount: number;
+  costPrice: number;
+  otherExpenses: number;
+  sellerPayoutAmount: number;
+  fines: number;
+  returnAmount: number;
+  retailAmount: number;
+  deliveryCost: number;
+  storageCost: number;
+  acceptance: number;
+  deductionOrPayment: number;
+  additionalPayment: number;
+  tax: number;
+  insuranceFee: number;
+  additionalInsuranceFee: number;
+  profit: number;
+  preTaxProfit: number;
+  finalProfit: number;
+  profitMargin: number;
+  isCostPriceSet: boolean;
+  isInsuranceFeeIncluded: boolean;
+  averageProfit: number;
+  averageStorageCost: number;
+  averageAdvertisingCost: number;
+  id: number;
+}

@@ -1,4 +1,4 @@
-import { IReportsWithAccountedFinances } from '../../../../database/interfaces/repots/index.interface.js';
+import { IReportsWithAccountedFinances } from '../../../../database/interfaces/reports/index.interface.js';
 
 export var sortReportsByAccountingDate = (
   reportsWithAccountedFinances: IReportsWithAccountedFinances[],

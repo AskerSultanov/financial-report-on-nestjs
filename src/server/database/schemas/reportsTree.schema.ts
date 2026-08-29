@@ -11,9 +11,6 @@ class Report {
 
   @Prop({ required: true })
   dateTo!: string;
-
-  @Prop()
-  schemaVersion?: number;
 }
 
 @Schema({ _id: false })
@@ -23,9 +20,6 @@ class MonthPeriod {
 
   @Prop({ type: [Report], required: false })
   reportIds?: Report[];
-
-  @Prop()
-  schemaVersion?: number;
 }
 
 @Schema({ _id: false })
@@ -35,23 +29,18 @@ class YearsPeriod {
 
   @Prop({ type: [MonthPeriod] })
   months?: MonthPeriod[];
-
-  @Prop()
-  schemaVersion?: number;
 }
 
 export type ReportsTreeDocument = HydratedDocument<ReportsTree>;
 
 @Schema()
 export class ReportsTree {
-  @Prop({ required: true })
+  @Prop({ required: true, unique: true })
   userId!: string;
 
   @Prop({ type: [YearsPeriod], required: false })
   years?: YearsPeriod[];
-
-  @Prop()
-  schemaVersion?: number;
 }
 
 export var ReportsTreeSchema = SchemaFactory.createForClass(ReportsTree);
+ReportsTreeSchema.index({ userId: 1 }, { unique: true });

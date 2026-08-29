@@ -5,5 +5,4 @@ export interface IToken extends Document {
   readonly lastUsed: Date;
   readonly token: string;
   readonly tokenHasBeenRemoved: boolean;
-  readonly schemaVersion: number;
 }

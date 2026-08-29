@@ -1,4 +1,4 @@
-import { IReports } from '../../../database/interfaces/repots/index.interface.js';
+import { IReports } from '../../../database/interfaces/reports/index.interface.js';
 
 var session: null = null;
 var projectonFields: string[] = [

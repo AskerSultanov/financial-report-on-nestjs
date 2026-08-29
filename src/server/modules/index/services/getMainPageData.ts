@@ -6,7 +6,7 @@ import { IGetMainPageData } from '../interfaces/getMainPageData.interface.js';
 import { ICleanYearPeriod } from './utils/interfaces/cleanReportTree.interface.js';
 import { IGetReportsByUserId } from '../interfaces/getReportsByUserId.interface.js';
 import { sortReportsByAccountingDate } from './utils/sortReportsByAccountingDate.js';
-import { IReportsWithAccountedFinances } from '../../../database/interfaces/repots/index.interface.js';
+import { IReportsWithAccountedFinances } from '../../../database/interfaces/reports/index.interface.js';
 
 var projectonFields: string[] = [
   'reports.reportId',

@@ -1,13 +1,11 @@
 import { Document } from 'mongoose';
 
 interface ILastLoadedReport {
-  readonly periodIndex?: number;
   readonly year: number;
   readonly month: string;
   readonly dateTo: string;
   readonly dateFrom: string;
   readonly reportId: number;
-  readonly totalTaxAmount: number;
 }
 
 export interface IQueueItem {

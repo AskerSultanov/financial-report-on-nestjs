@@ -62,9 +62,6 @@ export class TaxYear {
 
   @Prop({ default: 1 })
   excessInsuranceRate!: number;
-
-  @Prop()
-  schemaVersion?: number;
 }
 
 export type TaxParamsDocument = HydratedDocument<TaxParams>;
@@ -76,9 +73,8 @@ export class TaxParams {
 
   @Prop({ type: [TaxYear], required: false, default: [] })
   years!: TaxYear[];
-
-  @Prop()
-  schemaVersion!: number;
 }
 
 export var TaxParamsSchema = SchemaFactory.createForClass(TaxParams);
+
+TaxParamsSchema.index({ userId: 1 }, { unique: true });

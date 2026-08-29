@@ -4,13 +4,11 @@ export interface IReport {
   reportId: number;
   dateFrom: string;
   dateTo: string;
-  schemaVersion?: number;
 }
 
 export interface IMonthPeriod {
   month: string;
   reportIds: IReport[] | null[];
-  schemaVersion?: number;
 }
 
 export interface IYearsPeriod {
@@ -21,5 +19,4 @@ export interface IYearsPeriod {
 export interface IReportsTree extends Document {
   userId: string;
   years: IYearsPeriod[] | [];
-  schemaVersion?: number;
 }

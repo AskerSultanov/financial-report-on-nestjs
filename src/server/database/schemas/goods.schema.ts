@@ -6,60 +6,6 @@ export type GoodsDocument = HydratedDocument<Goods>;
 var mskTimeOffsetInMs = 10_800_000;
 
 @Schema({ _id: false })
-export class SkuMetric {
-  @Prop({ required: true })
-  year!: number;
-
-  @Prop({ required: true, default: 0 })
-  qty!: number;
-
-  @Prop({ required: true, default: 0 })
-  tax!: number;
-
-  @Prop({ required: true, default: 0 })
-  fines!: number;
-
-  @Prop({ required: true, default: 0 })
-  netProfit!: number;
-
-  @Prop({ required: true, default: 0 })
-  profitMargin!: number;
-
-  @Prop({ required: true, default: 0 })
-  retailAmount!: number;
-
-  @Prop({ required: true, default: 0 })
-  taxableAmount!: number;
-
-  @Prop({ required: true, default: 0 })
-  returnAmount!: number;
-
-  @Prop({ required: true, default: 0 })
-  storageCost!: number;
-
-  @Prop({ required: true, default: 0 })
-  deliveryCost!: number;
-
-  @Prop({ required: true, default: 0 })
-  acceptance!: number;
-
-  @Prop({ required: true, default: 0 })
-  insuranceFee!: number;
-
-  @Prop({ required: true, default: 0 })
-  otherExpenses!: number;
-
-  @Prop({ required: true, default: 0 })
-  sellerPayoutAmount!: number;
-
-  @Prop({ required: true, default: 0 })
-  deductionOrPayment!: number;
-
-  @Prop({ required: true, default: 0 })
-  additionalInsuranceFee!: number;
-}
-
-@Schema({ _id: false })
 export class Sku {
   @Prop({ required: true })
   id!: number;
@@ -99,14 +45,11 @@ export class Sku {
 
   @Prop({ default: false })
   deleted!: boolean;
-
-  @Prop({ type: [SkuMetric], required: false, default: [] })
-  metrics!: SkuMetric[];
 }
 
 @Schema()
 export class Goods {
-  @Prop({ required: true })
+  @Prop({ required: true, unique: true })
   userId!: string;
 
   @Prop({ type: [Sku], required: true, default: [] })
@@ -114,3 +57,5 @@ export class Goods {
 }
 
 export var GoodsSchema = SchemaFactory.createForClass(Goods);
+
+GoodsSchema.index({ userId: 1 });

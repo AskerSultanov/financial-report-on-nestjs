@@ -9,7 +9,7 @@ import {
   ReportsModelServices,
   TaxParamsModelServices,
   ReportsTreeModelServices,
-  ReportLoadingStatesModelServices,
+  ReportLoadingStateModelServices,
   WeeklyPricesAndDiscountsModelServices,
 } from './services/index.js';
 
@@ -22,7 +22,7 @@ import {
     ReportsModelServices,
     TaxParamsModelServices,
     ReportsTreeModelServices,
-    ReportLoadingStatesModelServices,
+    ReportLoadingStateModelServices,
     WeeklyPricesAndDiscountsModelServices,
     MongooseModule,
   ],
@@ -33,7 +33,7 @@ import {
     ReportsModelServices,
     TaxParamsModelServices,
     ReportsTreeModelServices,
-    ReportLoadingStatesModelServices,
+    ReportLoadingStateModelServices,
     WeeklyPricesAndDiscountsModelServices,
   ],
   imports: [MongooseModule.forFeature(models)],

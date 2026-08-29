@@ -1,9 +1,11 @@
-import {IWeeklyFinancialReportItem} from '../../WBAPI/interfaces/getReports.interface.js'
+import { IWeeklyFinancialReportItem } from '../../WBAPI/interfaces/getReports.interface.js';
 
+export function calcReturnAmount(report: IWeeklyFinancialReportItem[]): number {
+  var returns: IWeeklyFinancialReportItem[] = report.filter(
+    (item) => item.docTypeName === 'Возврат',
+  );
 
-export function calcReturnAmount  (report: IWeeklyFinancialReportItem[]): number {
-  var returnAmount = report.filter((item) => item.docTypeName === "Возврат").length;
+  var returnAmount: number = returns.length;
 
   return returnAmount;
-};
-
+}

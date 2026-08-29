@@ -5,9 +5,6 @@ export type UsersDocument = HydratedDocument<Users>;
 
 @Schema()
 export class Users {
-  @Prop()
-  schemaVersion!: string;
-
   @Prop({ required: true })
   login!: string;
 
@@ -25,3 +22,4 @@ export class Users {
 }
 
 export var UsersSchema = SchemaFactory.createForClass(Users);
+UsersSchema.index({ login: 1 }, { unique: true });

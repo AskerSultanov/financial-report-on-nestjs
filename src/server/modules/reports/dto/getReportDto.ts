@@ -1,5 +1,5 @@
-import { IsString, IsNotEmpty } from 'class-validator';
 import { Expose, Exclude } from 'class-transformer';
+import { IsString, IsNotEmpty } from 'class-validator';
 
 @Exclude()
 export class GetReportDto {

@@ -17,6 +17,8 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true,
     "noImplicitThis": false,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
     "typeRoots": ["./custom_typings", "./node_modules/@types"]
   }
 }

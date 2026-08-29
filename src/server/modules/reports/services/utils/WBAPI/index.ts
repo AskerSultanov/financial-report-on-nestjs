@@ -53,3 +53,12 @@ export class WBAPIUtils {
     weeklyPricesAndDiscounts: IPriceAndDiscount[],
   ) => Promise<{ id: number; alreadyExists: boolean }> = setPricesAndDiscounts;
 }
+
+export {
+  getReports,
+  getGoodsListFromWBAPI,
+  setPricesAndDiscounts,
+  getPriceUploadDetails,
+  getProcessedPricingInfo,
+  getPricesAndDiscountsByListGoods,
+};

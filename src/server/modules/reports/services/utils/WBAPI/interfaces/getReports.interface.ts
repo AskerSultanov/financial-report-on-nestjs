@@ -17,32 +17,33 @@ export interface IWeeklyFinancialReportItem {
   retailAmount: string;
   deliveryService: string;
   additionalPayment: string;
+  paidAcceptance: string
 }
 
 export interface IPaidStorageReportItem {
-  date: string;
-  logWarehouseCoef: number;
-  officeId: number;
-  warehouse: string;
-  warehouseCoef: number;
-  giId: number;
-  chrtId: number;
-  size: string;
-  barcode: string;
-  subject: string;
-  brand: string;
+  date?: string;
+  logWarehouseCoef?: number;
+  officeId?: number;
+  warehouse?: string;
+  warehouseCoef?: number;
+  giId?: number;
+  chrtId?: number;
+  size?: string;
+  barcode?: string;
+  subject?: string;
+  brand?: string;
   vendorCode: string;
-  nmId: number;
-  volume: number;
-  calcType: string;
-  warehousePrice: number;
-  barcodesCount: number;
-  palletPlaceCode: number;
-  palletCount: number;
-  originalDate: string;
-  loyaltyDiscount: number;
-  tariffFixDate: string;
-  tariffLowerDate: string;
+  nmId?: number;
+  volume?: number;
+  calcType?: string;
+  warehousePrice?: number;
+  barcodesCount?: number;
+  palletPlaceCode?: number;
+  palletCount?: number;
+  originalDate?: string;
+  loyaltyDiscount?: number;
+  tariffFixDate?: string;
+  tariffLowerDate?: string;
 }
 
 export interface IAdvertisingReportItem {

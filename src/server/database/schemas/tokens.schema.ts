@@ -16,9 +16,8 @@ export class Token {
 
   @Prop({ required: false, default: false })
   tokenHasBeenRemoved!: boolean;
-
-  @Prop()
-  schemaVersion!: number;
 }
 
 export var TokenSchema = SchemaFactory.createForClass(Token);
+
+TokenSchema.index({ userId: 1 }, { unique: true });

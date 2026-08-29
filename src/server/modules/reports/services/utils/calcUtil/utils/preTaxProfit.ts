@@ -1,25 +1,15 @@
-import truncateNum from "../../reportParsing/truncateNum.js";
-import { ISku } from "../../../../../../database/interfaces/repots/index.interface.js";
+import { truncateNum } from '../../reportParsing/truncateNum.js';
+import { ISku } from '../../../../../../database/interfaces/reportSku.interface.js';
 
-export function  calcPreTaxProfit  (sku: ISku, propPostfix: string = ""): number {
+export function calcPreTaxProfit(sku: ISku): number {
   var productCosts: number;
-  var qtyKey: string = 'qty' + propPostfix
-  var profitKey: string = "profit" + propPostfix
-  var costPricekey: string = 'costPrice' + propPostfix
-  var otherExpensesKey: string = 'otherExpenses' + propPostfix  
 
-  var qty = sku[qtyKey  as keyof ISku] as number
-  var profit = sku[profitKey as keyof ISku] as number
-  var costPrice = sku[costPricekey as keyof ISku] as number
-  var otherExpenses = sku[otherExpensesKey as keyof ISku] as number
-
-  if (profit === 0 || qty === 0) {
+  if (sku.profit === 0 || sku.qty === 0) {
     productCosts = 0;
   } else {
-    productCosts = qty * costPrice;
+    productCosts = sku.qty * sku.costPrice;
   }
 
-  var preTaxProfit = profit - otherExpenses- productCosts;
+  var preTaxProfit: number = sku.profit - sku.otherExpenses - productCosts;
   return truncateNum(preTaxProfit);
-};
-
+}

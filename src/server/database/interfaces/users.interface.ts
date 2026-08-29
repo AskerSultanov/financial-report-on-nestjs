@@ -6,5 +6,4 @@ export interface IUser extends Document {
   userId: string;
   passwd: string;
   registeredAt: Date;
-  schemaVersion: number;
 }
