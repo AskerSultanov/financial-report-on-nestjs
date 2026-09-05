@@ -4,7 +4,6 @@ import { ConfigService } from '@nestjs/config';
 import {
   GoodsModelServices,
   ReportsModelServices,
-  ReportsTreeModelServices,
   TaxParamsModelServices,
   TokensModelServices,
 } from '../../database/services/index.js';
@@ -12,7 +11,6 @@ import { InjectConnection } from '@nestjs/mongoose';
 
 import { WBAPIUtils } from './services/utils/WBAPI/index.js';
 import { CalcUtils } from './services/utils/calcUtil/index.js';
-import { ReportTreeBuilderUtil } from './services/utils/reportTreeBuilder/index.js';
 import { ReportsProcessingService } from './services/utils/different/reportProcessing.js';
 
 import { IWBAPIReports } from './services/utils/WBAPI/interfaces/getReports.interface.js';
@@ -31,11 +29,9 @@ export class ReportService {
     private readonly configService: ConfigService,
     private readonly goodsModelServices: GoodsModelServices,
     private readonly tokensModelServices: TokensModelServices,
-    private readonly reportTreeBuilder: ReportTreeBuilderUtil,
     private readonly reportsModelServices: ReportsModelServices,
     private readonly reportsProcessingService: ReportsProcessingService,
     private readonly taxParamsModelServices: TaxParamsModelServices,
-    private readonly reportsTreeModelServices: ReportsTreeModelServices,
     @InjectConnection() private readonly connection: mongoose.Connection,
   ) {}
 
