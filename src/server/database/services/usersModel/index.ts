@@ -4,15 +4,15 @@ import { InjectConnection, InjectModel } from '@nestjs/mongoose';
 import { Users, UsersDocument } from '../../schemas/users.schema.js';
 import { Goods, GoodsDocument } from '../../schemas/goods.schema.js';
 import { Token, TokenDocument } from '../../schemas/tokens.schema.js';
-import { Reports, ReportsDocument } from '../../schemas/reports.schema.js';
+import { Report, ReportDocument } from '../../schemas/reports.schema.js';
+import {
+  ReportPeriods,
+  ReportPeriodDocument,
+} from '../../schemas/reportPeriods.schema.js';
 import {
   TaxParams,
   TaxParamsDocument,
 } from '../../schemas/taxParams.schema.js';
-import {
-  ReportsTree,
-  ReportsTreeDocument,
-} from '../../schemas/reportsTree.schema.js';
 import {
   ReportLoadingStates,
   ReportLoadingStatesDocument,
@@ -42,13 +42,13 @@ export class UsersModelServices {
 
     @InjectModel(Token.name) private tokenModel: Model<TokenDocument>,
 
-    @InjectModel(Reports.name) private reportsModel: Model<ReportsDocument>,
+    @InjectModel(Report.name) private reportsModel: Model<ReportDocument>,
 
     @InjectModel(TaxParams.name)
     private taxParamsModel: Model<TaxParamsDocument>,
 
-    @InjectModel(ReportsTree.name)
-    private reportsTreeModel: Model<ReportsTreeDocument>,
+    @InjectModel(ReportPeriods.name)
+    private reportPeriodsModel: Model<ReportPeriodDocument>,
 
     @InjectModel(ReportLoadingStates.name)
     private reportLoadingStateModel: Model<ReportLoadingStatesDocument>,

@@ -3,7 +3,7 @@ interface Models {
   tokenModel: any;
   reportsModel: any;
   taxParamsModel: any;
-  reportsTreeModel: any;
+  reportPeriodsModel: any;
   reportLoadingStateModel: any;
   weeklyPricesAndDiscountsModel: any;
   connection: any;
@@ -43,9 +43,9 @@ export async function resetUser(this: Models, userId: string): Promise<void> {
       { $set: { years: [] } },
       { session },
     );
-    await this.reportsTreeModel.updateOne(
+    await this.reportPeriodsModel.updateOne(
       { userId },
-      { $set: { years: [] } },
+      { $set: { reportPeriods: [] } },
       { session },
     );
     await this.reportLoadingStateModel.updateOne(

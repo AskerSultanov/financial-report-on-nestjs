@@ -1,22 +1,21 @@
 import { ClientSession } from 'mongoose';
 import { Injectable } from '@nestjs/common';
-import { WBAPIUtils } from '../WBAPI/index.js';
-import { sortYearsTree } from './sortYearTree.js';
 import { getNewSkusToListGoods } from './getNewSkusToListGoods.js';
 import { ProcessReportSkusService } from '../reportParsing/index.js';
+import { getReportTargetYearAndMonth } from './getReportTargetYearAndMonth.js';
 
 import {
   GoodsModelServices,
   ReportsModelServices,
   TaxParamsModelServices,
-  ReportsTreeModelServices,
   ReportLoadingStateModelServices,
+  ReportPeriodsModelServices,
 } from '../../../../../database/services/index.js';
-import { ReportTreeBuilderUtil } from '../reportTreeBuilder/index.js';
 
 import { IWBAPIReports } from '../WBAPI/interfaces/getReports.interface.js';
 import { IReport } from '../../../../../database/interfaces/report.interface.js';
 import { ISku } from '../../../../../database/interfaces/reportSku.interface.js';
+import { IReportPeriodsItem } from '../../../../../database/interfaces/reportPeriods.interface.js';
 import { IUpdatedTaxYear } from '../../../../../database/services/taxParamsModel/interfaces/updatedTaxYear.interface.js';
 
 export interface ProcessReportsResult {
@@ -31,16 +30,29 @@ export interface ProcessReportsResult {
 }
 
 var selectedFields: string[] = ['listGoods.id', 'listGoods.skuName'];
+var monthList: string[] = [
+  'январь',
+  'февраль',
+  'марта',
+  'апрель',
+  'май',
+  'июнь',
+  'июль',
+  'август',
+  'сентябрь',
+  'октябрь',
+  'ноябрь',
+  'декабрь',
+];
 
 @Injectable()
 export class ReportsProcessingService {
   constructor(
     private readonly goodsModelServices: GoodsModelServices,
     private readonly reportModelServices: ReportsModelServices,
-    private readonly reportTreeBuilderUtil: ReportTreeBuilderUtil,
     private readonly taxParamsModelServices: TaxParamsModelServices,
-    private readonly reportTreeModelServices: ReportsTreeModelServices,
     private readonly processReportSkusService: ProcessReportSkusService,
+    private readonly reportPeriodsModelServices: ReportPeriodsModelServices,
     private readonly reportLoadingStateModelServices: ReportLoadingStateModelServices,
   ) {}
 
@@ -59,6 +71,11 @@ export class ReportsProcessingService {
 
     var reportSkus: ISku[] = [];
     var updatedTaxParams: IUpdatedTaxYear[] = [];
+
+    var { targetYear, targetMonthIndex } = getReportTargetYearAndMonth(
+      dateFrom,
+      dateTo,
+    );
 
     for (var currentYear = startYear; currentYear <= endYear; currentYear++) {
       var taxParams = await this.taxParamsModelServices.addNewTaxYearToDb(
@@ -82,21 +99,6 @@ export class ReportsProcessingService {
       updatedTaxParams.push({ year: currentYear, data: recalculatedTaxParams });
     }
 
-    var { reportTree } = await this.reportTreeModelServices.getReportTree(
-      userId,
-      session,
-    );
-
-    var { years, year, month } =
-      this.reportTreeBuilderUtil.insertReportToReportTree(
-        dateFrom,
-        dateTo,
-        reportId,
-        reportTree,
-      );
-
-    var sortedYears = sortYearsTree(years);
-
     var report: IReport = {
       userId,
       reportId,
@@ -105,17 +107,26 @@ export class ReportsProcessingService {
       isCrossYearPeriod,
       skus: reportSkus,
       isFinancesAccounted: false,
-      recordedTo: { year, month },
+      recordedTo: { year: targetYear, month: monthList[targetMonthIndex] },
       reportIsEmpty: !reportSkus.length,
     };
 
-    await this.reportModelServices.saveReportToDb(report, session);
+    var newReportPeriod: IReportPeriodsItem = {
+      reportId,
+      dateFrom,
+      dateTo,
+      year: targetYear,
+      monthIndex: targetMonthIndex,
+      monthName: monthList[targetMonthIndex],
+    };
 
-    await this.reportTreeModelServices.updateReportsTree(
+    await this.reportPeriodsModelServices.addReportToReportPeriods(
       userId,
-      sortedYears,
+      newReportPeriod,
       session,
     );
+
+    await this.reportModelServices.saveReportToDb(report, session);
 
     if (!isReportFromFile) {
       await this.reportLoadingStateModelServices.setLastReportRequestTimestamp(
@@ -164,7 +175,13 @@ export class ReportsProcessingService {
 
     return {
       reportPeriodIsEmpty: report.reportIsEmpty,
-      reportData: { reportId, year, month, dateFrom, dateTo },
+      reportData: {
+        reportId,
+        dateFrom,
+        dateTo,
+        month: monthList[targetMonthIndex],
+        year: targetYear,
+      },
     };
   }
 }

@@ -8,7 +8,7 @@ interface Models {
   tokenModel: any;
   reportsModel: any;
   taxParamsModel: any;
-  reportsTreeModel: any;
+  reportPeriodsModel: any;
   reportLoadingStateModel: any;
   weeklyPricesAndDiscountsModel: any;
 }
@@ -27,7 +27,7 @@ export async function createUserToDb(
   await this.tokenModel.insertOne({ userId }, { session });
   await this.reportsModel.insertOne({ userId }, { session });
   await this.taxParamsModel.insertOne({ userId }, { session });
-  await this.reportsTreeModel.insertOne({ userId }, { session });
+  await this.reportPeriodsModel.insertOne({ userId }, { session });
   await this.reportLoadingStateModel.insertOne({ userId }, { session });
   await this.weeklyPricesAndDiscountsModel.insertOne({ userId }, { session });
   await this.usersModel.insertOne(

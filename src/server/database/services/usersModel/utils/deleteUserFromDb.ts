@@ -6,7 +6,7 @@ interface Models {
   tokenModel: any;
   reportsModel: any;
   taxParamsModel: any;
-  reportsTreeModel: any;
+  reportPeriodsModel: any;
   reportLoadingStateModel: any;
   weeklyPricesAndDiscountsModel: any;
 }
@@ -21,7 +21,7 @@ export async function deleteUserFromDb(
   await this.tokenModel.deleteOne({ userId }, { session });
   await this.reportsModel.deleteOne({ userId }, { session });
   await this.taxParamsModel.deleteOne({ userId }, { session });
-  await this.reportsTreeModel.deleteOne({ userId }, { session });
+  await this.reportPeriodsModel.deleteOne({ userId }, { session });
   await this.reportLoadingStateModel.deleteOne({ userId }, { session });
   await this.weeklyPricesAndDiscountsModel.deleteOne({ userId }, { session });
 }
