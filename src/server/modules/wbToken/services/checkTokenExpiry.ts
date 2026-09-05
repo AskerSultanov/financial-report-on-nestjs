@@ -1,12 +1,17 @@
-import { parseJwt } from './parseJwt.js';
-
 import { IWBTokenPayload } from '../interfaces/wbTokenPayload.interface.js';
 
-var mskTimeOffsetInSec: number = 10_800;
+var msInSec: number = 1000;
 
-export var checkTokenExpiry = (token: string): boolean => {
-  var payload: IWBTokenPayload = parseJwt(token);
-  var currentTimestamp: number = Date.now() + mskTimeOffsetInSec;
+export var checkTokenExpiry = (
+  tokenPayload: IWBTokenPayload,
+): { isExpired: boolean } => {
+  if (!tokenPayload?.exp) {
+    throw new Error('Invalid WBTOKEN: payload is missing');
+  }
 
-  return !payload?.exp || payload.exp * 1000 <= currentTimestamp;
+  var currentTimestamp: number = Date.now();
+
+  var isExpired: boolean = tokenPayload.exp * msInSec <= currentTimestamp;
+
+  return { isExpired };
 };
