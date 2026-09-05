@@ -1,4 +1,4 @@
-import { IWBTokenPayload } from '../interfaces/wbTokenPayload.interface.js';
+import { IWBTokenPayload } from '../../interfaces/wbTokenPayload.interface.js';
 
 var msInSec: number = 1000;
 
